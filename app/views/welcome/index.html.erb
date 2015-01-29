@@ -44,5 +44,13 @@
           </ul>
         </div>
       </div>
-
     </div>
+  <div class="container">
+    <% @quotes.each do |author, quote| %>
+    <p><%= quote %></p>
+    <p><em class="text_muted"> <%= author %></em></p>
+    <% end %>
+    
+
+
+  </div>
