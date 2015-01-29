@@ -8,7 +8,7 @@
 </head>
 <nav class="navbar navbar-inverse navbar-static-top">
   <div class="container">
-    <a class="navbar-brand" href="#">gCamp</a>
+     <%=link_to "gCamp", root_path, class:"navbar-brand" %>
   </div>
 </nav>
 <body>
@@ -16,6 +16,7 @@
 <%= yield %>
 
 <div class="container">
+  <hr></hr>
 <footer>
   <%=link_to "About", about_path %> | <%=link_to "Terms", terms_path %>
 
