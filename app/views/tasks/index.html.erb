@@ -1,3 +1,10 @@
-Listing Tasks
-Description
-test task
+<div class="container">
+  <div class="page-header">
+    <h1>Listing Tasks</h1>
+
+<% @tasks.each do |task| %>
+  <div>
+    <p><%= link_to task.name, task_path(task) %></p>
+  <div>
+<hr>
+<% end %>
