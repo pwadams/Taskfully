@@ -1,10 +1,12 @@
-<div class="container">
+<div class= "container">
   <div class="page-header">
     <h1>Listing Tasks</h1>
 
-<% @tasks.each do |task| %>
-  <div>
-    <p><%= link_to task.name, task_path(task) %></p>
-  <div>
-<hr>
+    <% @tasks.each do |task| %>
+    <div class="row">
+      <div class="col-md-12"><%= task.description %></div>
+      <div class="col-md-1"><%= task.name %></div>
+    </div>
+  </div>
+</div>
 <% end %>
