@@ -4,5 +4,5 @@ Rails.application.routes.draw do
    get '/terms', to: 'terms#index'
    get '/about', to: 'about#index'
    get '/faq', to: 'common_questions#index'
-   resources :tasks, only: [:index]
+   resources :tasks, only: [:index, :show, :edit, :destroy, :new]
 end
