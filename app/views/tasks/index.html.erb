@@ -1,17 +1,17 @@
 <div class= "container">
   <div class="page-header">
     <h1>Listing Tasks</h1>
+  </div>
 
     <% @tasks.each do |task| %>
     <div class="row">
       <div class="col-md-12"><%= task.description %></div>
       <div class="col-md-1"><%= task.name %></div>
-        <div class="col-md-1"><%=link_to "Show", "task_path" %>
-          <%=link_to "Edit", "edit_task_path" %> </div>
-          <%=link_to "Destroy", "delete" %> </div>
-          <%=link_to "New Task", "new_task_path" %>
+        <div class="col-md-1"><%=link_to "Show", task_path(task) %>
+          <%=link_to "Edit", edit_task_path(task) %> </div>
+          <%=link_to "Destroy", task, method: :delete %> </div>
+            <%=link_to "New Task", new_task_path %>
 
-    </div>
   </div>
 </div>
 <% end %>
