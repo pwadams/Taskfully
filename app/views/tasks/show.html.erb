@@ -1,8 +1,10 @@
 <div class="alert alert-success", class: "alert", role="alert">Task was successfully created</div>
 
-<div> <%=@task.name %></div>
-<div><%=@task.description %></div>
-
+<div>
+<%=@task.name %>
+<%=@task.description %>
+</div>
 
 <%=link_to "Edit", edit_task_path(@task) %>
 <%=link_to "Delete", tasks_path(@task), method: :delete %>
+<%=link_to "Back", tasks_path %>
