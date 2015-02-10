@@ -13,10 +13,9 @@ class TasksController < ApplicationController
 
   def create
       @task = Task.new(task_params)
-      task.save
+      @task.save
+      redirect_to task_path(@task)
 
-
-      redirect_to root_path
   end
 
   def edit
@@ -24,9 +23,10 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task = Tasks.find(params[:id])
+    @task = Task.find(params[:id])
+
     if @task.update(task_params)
-      redirect_to tasks_path
+      redirect_to tasks_path(@task)
     else
       render :edit
   end
