@@ -4,17 +4,21 @@
   </div>
 
     <% @tasks.each do |task| %>
-    <div class="row">
-      <div class="col-md-12"><%= task.description %></div>
-      <div class="col-md-1"><%= task.name %></div>
-      <div class="col-md-1"><%=link_to "Show", task_path(task) %>
-          <%=link_to "Edit", edit_task_path(task) %> </div>
-          <%=link_to "Destroy", task, method: :delete %> </div>
+      <div class="row">
+        <div class="col-md-4">
+          <%= task.description %>
+        </div>
 
+        <div class="col-md-4">
+          <%= task.name %>
+        </div>
 
+        <div class="col-md-4"><%=link_to "Show", task_path(task) %>
+          <%=link_to "Edit", edit_task_path(task) %>
+          <%=link_to "Destroy", task, method: :delete %>
+        </div>
 
-
-  </div>
-<% end %>
-    <%=link_to "New Task", new_task_path %>
+      </div>
+    <% end %>
+<%=link_to "New Task", new_task_path %>
 </div>
