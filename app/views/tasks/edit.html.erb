@@ -1,4 +1,9 @@
-<%= form_for @task do |f| %>
+<div class= "container">
+  <div class="page-header">
+    <h1>Editing a Task</h1>
+  </div>
+
+  <%= form_for @task do |f| %>
 <div>
   <%= f.label :name  %>
   <%= f.text_field :name %>
@@ -12,4 +17,6 @@
 <%= f.submit "Update Task" %>
 <% end %>
 
+
+<%=link_to "Show", tasks_path %> |
 <%=link_to "Back", tasks_path %>

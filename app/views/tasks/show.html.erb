@@ -5,6 +5,6 @@
 <%=@task.description %>
 </div>
 
-<%=link_to "Edit", edit_task_path(@task) %>
-<%=link_to "Delete", tasks_path(@task), method: :delete %>
+<%=link_to "Edit", edit_task_path(@task) %> |
+<%=link_to "Delete", tasks_path(@task), method: :delete %> |
 <%=link_to "Back", tasks_path %>
