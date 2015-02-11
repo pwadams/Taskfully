@@ -1,6 +1,13 @@
 <div class= "container">
   <div class="page-header">
-    <h1>Listing Tasks</h1>
+
+    <div class="row">
+      <div class="col-md-4", "pull-right">
+        <%=link_to "New Task", new_task_path, class: "btn btn-info" %>
+      </div>
+    </div>
+
+    <h1>Tasks</h1>
   </div>
 
     <% @tasks.each do |task| %>
@@ -13,12 +20,11 @@
           <%= task.name %>
         </div>
 
-        <div class="col-md-4"><%=link_to "Show", task_path(task) %>
+        <div class="col-md-4">
+          <%=link_to "Show", task_path(task) %>
           <%=link_to "Edit", edit_task_path(task) %>
           <%=link_to "Destroy", task, method: :delete %>
         </div>
-
       </div>
     <% end %>
-<%=link_to "New Task", new_task_path %>
 </div>
