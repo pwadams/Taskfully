@@ -4,23 +4,21 @@
     </div>
     <h1> Tasks </h1>
 
-    <% @tasks.each do |task| %>
     <table class="table">
-      <tr class="row">
-        <td>
-          <label><%= task.description %></label>
-        </td>
-        <td class="text-right"
-          <label>
-            <%=link_to "Edit", edit_task_path(task), class:"btn btn-info" %>
-            <%=link_to "Destroy", task, class: "btn btn-danger", method: :delete %>
-          </label>
+    <thead>
+      <th> Description </th>
+    </thead>
+
+    <tbody>
+      <% @tasks.each do |task| %>
+      <tr>
+        <td><label><%= task.description %></label></td>
+        <td class="text-right">
+          <%=link_to "Edit", edit_task_path(task), class:"btn btn-info" %>
+          <%=link_to "Destroy", task, class: "btn btn-danger", method: :delete %>
         </td>
       </tr>
-          <p>
-
-          </p>
-        </td>
+      <% end %>
+    </tbody>
     </table>
-    <% end %>
 </div>
