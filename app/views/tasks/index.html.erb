@@ -1,28 +1,21 @@
-<div class= "container">
-  <div class="alert alert-success", role="alert"><p class="text-center">Task was successfully completed.</p></div>
+<div class="page-header">
+  <h1>Tasks <%=link_to "New Task", new_task_path, class: "btn btn-info pull-right" %></h1>
+</div>
 
-  
-  <div class="page-header">
-    <div class="row">
-      <h1>Tasks <%=link_to "New Task", new_task_path, class: "btn btn-info pull-right" %></h1>
-    </div>
-  </div>
+<table class="table">
+  <thead>
+    <th><h3>Description<h3></th>
+  </thead>
 
-  <table class="table">
-    <thead>
-      <th><h3>Description<h3></th>
-      </thead>
-
-      <tbody>
-        <% @tasks.each do |task| %>
-        <tr>
-          <td><%= task.description %></td>
-          <td class="text-right">
-            <%=link_to "Edit", edit_task_path(task), class:"btn btn-info" %>
-            <%=link_to "Destroy", task, class: "btn btn-danger", method: :delete %>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.description %></td>
+        <td class="text-right">
+          <%=link_to "Edit", edit_task_path(task), class:"btn btn-info" %>
+          <%=link_to "Destroy", task, class: "btn btn-danger", method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

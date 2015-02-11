@@ -14,22 +14,21 @@
 </nav>
 
 <div class= "container">
-<% flash.each do |name, message| %>
-<%= content_tag :div, message, :id => "flash_#{name}", class: "alert alert-success"%>
-<% end %>
+  <% flash.each do |name, message| %>
+    <%= content_tag :div, message, :id => "flash_#{name}", class: "alert alert-success"%>
+  <% end %>
 
-<%= yield %>
+  <%= yield %>
 
-<div class="container">
-<hr>
-<footer>
-  <%=link_to "Tasks", tasks_path %> | <%=link_to "About", about_path %> | <%=link_to "Terms", terms_path %> | <%=link_to "FAQ", faq_path %>
-  <%=link_to image_tag("linked_in.jpg", class: "social_media"),"https://www.linkedin.com/" %>
-  <%=link_to image_tag("GitHub.png", class: "social_media"),"http://github.com" %>
-  <%=link_to image_tag("Twitter.png", class: "social_media"),"https://twitter.com/" %>
-  <%=link_to image_tag("galvanize.png", class: "social_media"),"http://www.galvanize.it/" %>
+  <hr>
+  <footer>
+    <%=link_to "Tasks", tasks_path %> | <%=link_to "About", about_path %> | <%=link_to "Terms", terms_path %> | <%=link_to "FAQ", faq_path %>
+    <%=link_to image_tag("linked_in.jpg", class: "social_media"),"https://www.linkedin.com/" %>
+    <%=link_to image_tag("GitHub.png", class: "social_media"),"http://github.com" %>
+    <%=link_to image_tag("Twitter.png", class: "social_media"),"https://twitter.com/" %>
+    <%=link_to image_tag("galvanize.png", class: "social_media"),"http://www.galvanize.it/" %>
 
-</footer>
+  </footer>
 </div>
 </body>
 </html>
