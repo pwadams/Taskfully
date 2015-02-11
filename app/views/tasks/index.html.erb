@@ -6,18 +6,21 @@
 
     <% @tasks.each do |task| %>
     <table class="table">
-      <div class="row">
-        <div class="col-md-10">
-          <%= task.description %>
-        </div>
+      <tr class="row">
+        <td>
+          <label><%= task.description %></label>
+        </td>
+        <td class="text-right"
+          <label>
+            <%=link_to "Edit", edit_task_path(task), class:"btn btn-info" %>
+            <%=link_to "Destroy", task, class: "btn btn-danger", method: :delete %>
+          </label>
+        </td>
+      </tr>
+          <p>
 
-        <div class="col-md-2">
-          <p class="text-right">
-          <%=link_to "Edit", edit_task_path(task), class:"btn btn-info" %>
-          <%=link_to "Destroy", task, class: "btn btn-danger", method: :delete %>
           </p>
-        </div>
-      </div>
+        </td>
     </table>
     <% end %>
 </div>
