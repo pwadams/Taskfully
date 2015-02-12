@@ -1,7 +1,13 @@
-  <%= form_for @task, html: {class: "form-horizontal" } do |f| %>
-    <div class="form-group">
-      <%= f.label :description, class: "col-sm-1 control-label" %>
+<%= form_for @task, html: {class: "form-horizontal" } do |f| %>
+  <div class="form-group">
+    <%= f.label :description, class: "col-sm-1 control-label" %>
     <div class= "col-md-4">
-        <%= f.text_field :description, class:"form-control" %>
+      <%= f.text_field :description, class:"form-control" %>
     </div>
-  <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit class: "col-sm-offset-1 btn btn-primary" %>
+    <%= link_to "Cancel", tasks_path, class: "btn btn-default" %>
+  </div>
+<% end %>

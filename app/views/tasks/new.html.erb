@@ -8,11 +8,7 @@
         <li><%= "New Task" %></li>
       </ol>
 
-      <%=render partial: "form" %>
 
-    <div class="form-group">
-        <%= f.submit "Create Task", class: "col-sm-offset-1 btn btn-primary" %>
-        <%= link_to "Cancel", tasks_path, class: "btn btn-default" %>
-        <% end %>
-    </div>
+      <%=render partial: "form" %>
+    
   </div>
