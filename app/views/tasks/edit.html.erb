@@ -3,16 +3,10 @@
     <h1>Editing a Task</h1>
   </div>
 
-  <%= form_for @task do |f| %>
-
-  <div>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  </div>
+  <%=render partial: "form" %>
 
   <%= f.submit "Update Task" %>
   <% end %>
-
 
 <%=link_to "Show", tasks_path %> |
 <%=link_to @task.description %>
