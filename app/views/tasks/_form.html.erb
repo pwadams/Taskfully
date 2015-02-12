@@ -7,8 +7,16 @@
   </div>
 
   <div class="form-group">
+    <div class="col-md-6 col-md-offset-1">
+      <%= f.check_box :is_complete %>
+      <%= f.label :is_complete %>
+    </div>
+  </div>
+
+  <div class="form-group">
     <div class= "col-md-4 col-md-offset-1" >
-    <%= f.submit class: "btn btn-primary" %>
-    <%= link_to "Cancel", tasks_path, class: "btn btn-default" %>
+      <%= f.submit class: "btn btn-primary" %>
+      <%= link_to "Cancel", tasks_path, class: "btn btn-default" %>
+    </div>
   </div>
 <% end %>
