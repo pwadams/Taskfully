@@ -15,7 +15,7 @@ class TasksController < ApplicationController
   def create
       @task = Task.new(task_params)
       @task.save
-      flash[:notice] = "Post successfully created"
+      flash[:notice] = "Task was successfully created"
       redirect_to task_path(@task)
   end
 
@@ -27,7 +27,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     if @task.update(task_params)
-       flash[:notice] = "Post successfully updated"
+       flash[:notice] = "Task was successfully updated"
 
        redirect_to task_path
 
