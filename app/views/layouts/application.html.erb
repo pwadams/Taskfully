@@ -14,15 +14,18 @@
 </nav>
 
 <div class= "container">
-<% if flash[:notice].present? %>
+  <% if flash[:notice].present? %>
   <p class="alert alert-success"><%= flash[:notice] %></p>
-<% end %>
+  <% end %>
+
+  <%= yield %>
 
 </div>
-  <%= yield %>
+
 <div class= "container">
+
+<footer>
   <hr>
-  <footer>
     <%=link_to "Tasks", tasks_path %> | <%=link_to "About", about_path %> | <%=link_to "Terms", terms_path %> | <%=link_to "FAQ", faq_path %>
     <%=link_to image_tag("linked_in.jpg", class: "social_media"),"https://www.linkedin.com/" %>
     <%=link_to image_tag("GitHub.png", class: "social_media"),"http://github.com" %>
