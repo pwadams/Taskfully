@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'actionview-encoded_mail_to', '~> 1.0.5'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'rails_12factor', group: :production
 

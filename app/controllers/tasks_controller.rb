@@ -5,7 +5,6 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
-
   end
 
   def new
@@ -30,9 +29,7 @@ class TasksController < ApplicationController
        flash[:notice] = "Task was successfully updated"
 
        redirect_to task_path
-
-
-    else
+     else
       render :edit
   end
 end
