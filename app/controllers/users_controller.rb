@@ -36,6 +36,7 @@ end
 
   def destroy
     User.destroy(params[:id])
+    flash[:notice] = "User was successfully deleted"
     redirect_to users_path
   end
 
