@@ -1,0 +1,18 @@
+<div class="container">
+<div class="page-header">
+  <h1>Projects <%=link_to "New Project", new_project_path, class: "btn btn-info pull-right" %></h1>
+</div>
+
+<table class="table">
+  <thead>
+    <th>Name</th>
+  </thead>
+  <tbody>
+      <% @projects.each do |project| %>
+        <tr>
+          <td><%= link_to project.name, project_path(project) %></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
+</div>

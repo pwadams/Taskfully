@@ -1,0 +1,9 @@
+<h1>
+  <div class= "page-header">
+    <div class="pull-right">
+    <%=link_to "Edit", edit_project_path(@project), class: "btn btn-info" %>
+    <%=link_to "Destroy", project_path(@project), class: "btn btn-danger" , method: "delete" %>
+  </div>
+    <%= @project.name %>
+  </div>
+</h1>
