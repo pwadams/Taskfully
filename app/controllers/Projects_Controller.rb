@@ -10,9 +10,12 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(params.require(:project).permit(:name))
-    @project.save
+    if @project.save
     flash[:notice] = "Project was successfully created"
     redirect_to projects_path
+  else
+    render :new
+  end
   end
 
   def show
@@ -25,9 +28,12 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
-    @project.update(params.require(:project).permit(:name))
+    if @project.update(params.require(:project).permit(:name))
     flash[:notice] = "Project was successfully updated"
     redirect_to project_path
+    else
+    render :edit
+  end
   end
 
   def destroy
