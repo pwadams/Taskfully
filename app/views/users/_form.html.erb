@@ -1,5 +1,6 @@
 <%= form_for @user, html: {class: "form-horizontal"} do |f| %>
-  <div class="form-group">
+<%= render partial: "shared/errors", locals: {object: @user} %>
+<div class="form-group">
     <%= f.label :first_name, class: "col-md-2 control-label" %>
     <div class= "col-md-4">
       <%= f.text_field :first_name, class: "form-control" %>
