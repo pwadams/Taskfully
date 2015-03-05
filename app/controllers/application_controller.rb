@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :authenticate_user
 
-    def authenticate
+    def authenticate_user
       if current_user
       flash[:notice] = "You must register or log in before you can do that!"
       redirect_to root_path
