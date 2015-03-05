@@ -22,6 +22,20 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :password, class: "col-md-2 control-label" %>
+    <div class= "col-md-4">
+      <%= f.text_field :password, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation, class: "col-md-2 control-label" %>
+    <div class= "col-md-4">
+      <%= f.text_field :password_confirmation, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
     <div class= "col-md-4 col-md-offset-2" >
       <%= f.submit class: "btn btn-primary" %>
       <%= link_to "Cancel", users_path, class: "btn btn-default" %>
