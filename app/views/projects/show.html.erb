@@ -4,6 +4,8 @@
     <%=link_to "Edit", edit_project_path(@project), class: "btn btn-info" %>
     <%=link_to "Destroy", project_path(@project), class: "btn btn-danger" , method: "delete" %>
   </div>
-    <%= @project.name %>
+  <% @projects.tasks.each do |tasks| %>
+  <%=link_to@project.task.name, project_path(@task) %>
+  <% end %>
   </div>
 </h1>
