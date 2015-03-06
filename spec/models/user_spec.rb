@@ -5,7 +5,7 @@ describe User do
 
   before :each do
   @user = User.create(first_name: "Joe",
-  last_name: "Smith", email: "joe@comcast.com"
+  last_name: "Smith", email: "joe@comcast.com", password: "dingo"
   )
   end
 

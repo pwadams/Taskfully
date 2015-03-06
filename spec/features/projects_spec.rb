@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'Managing Projects' do
 
   before do
+    sign_in
     project = Project.new(name: "Household chores")
     project.save!
   end

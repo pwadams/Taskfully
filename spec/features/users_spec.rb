@@ -2,8 +2,9 @@ require 'rails_helper'
 
   feature 'Users' do
     before do
-      user = User.new(first_name: "Chloe", last_name: "Bradley", email: "bradley@gschool.com", password: "dingo", password_confirmation: "dingo")
-      user.save!
+      sign_in
+      @user = User.new(first_name: "Chloe", last_name: "Bradley", email: "bradley@gschool.com", password: "dingo", password_confirmation: "dingo")
+      @user.save!
     end
 
     scenario 'can see index page' do
@@ -32,18 +33,13 @@ require 'rails_helper'
     end
 
     scenario 'edit user' do
-
-      visit users_path
-      click_link "Edit"
-
-      expect(page).to have_content "Edit User"
+      visit user_path(@user)
+      click_on "Edit"
       fill_in :user_first_name, with: "Alexis"
-      fill_in :user_last_name, with: "Bradley"
-      fill_in :user_email, with: "bradley@gschool.com"
       click_button "Update User"
 
       expect(page).to have_content "User was successfully updated"
-      expect(page).to have_content "Alexis"
+      expect(page).to have_content "Alexis Bradley"
     end
 
     scenario 'delete user' do
