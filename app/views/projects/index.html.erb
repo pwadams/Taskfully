@@ -7,19 +7,10 @@
     <th>Name</th>
   </thead>
   <tbody>
-      <% @projects.tasks.each do |tasks| %>
-        <tr>
-          <td><%= link_to task.count, project_path(@task) %></td>
-        </tr>
-      <% end %>
-  </tbody>
-</table>
-</div>
-
-<ul>
-<% @cat.toys.each do |toy| %>
-  <li><%= toy.name %></li>
-  <% end %>
-</ul>
-
-</div>
+     <% @projects.each do |project| %>
+       <tr>
+         <td><%= link_to project.name, project_path(project) %></td>
+       </tr>
+     <% end %>
+   </tbody>
+ </table>

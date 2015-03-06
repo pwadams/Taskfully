@@ -1,5 +1,10 @@
   <div class="page-header">
     <h1>New Project</h1>
+
+    <ol class="breadcrumb">
+      <li><%= link_to "Projects", projects_path %></li>
+      <li><%= "New Project" %></li>
+    </ol>
   </div>
 
   <%= render "form" %>
