@@ -14,5 +14,5 @@ def create_project
 end
 
 def create_task(proj)
-  Task.create!(description: "buy yarn", due_date: "04/19/2015", project_id: proj.id)
+  Task.create!(description: "buy yarn", due_date: "01/01/2015", project_id: proj.id)
 end
