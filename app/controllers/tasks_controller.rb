@@ -5,7 +5,6 @@ class TasksController < ApplicationController
       @project = Project.find(params[:project_id])
   end
 
-
   def index
     @tasks = @project.tasks
   end
@@ -54,6 +53,6 @@ end
   private
 
   def task_params
-    params.require(:task).permit(:name, :description, :is_complete, :due_date)
+    params.require(:task).permit(:name, :description, :is_complete, :due_date, :project_id)
   end
 end

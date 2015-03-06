@@ -4,17 +4,17 @@
     <%=link_to "Edit", edit_project_path(@project), class: "btn btn-info" %>
     <%=link_to "Destroy", project_path(@project), class: "btn btn-danger" , method: "delete" %>
     </div>
-  </div>
+    <%= @project.name %>
 </h1>
+  </div>
+
 <ol class="breadcrumb">
   <li><%= link_to "Projects", projects_path %></li>
   <li class="active"><%= @project.name %></li>
 </ol>
+
   <table class="table">
     <tbody>
-    <tr>
-      <%= @project.name %>
-    <tr>
     <tr>
       <td><%= link_to pluralize(@project.tasks.count, "task"), project_tasks_path(@project) %></td>
     </tr>
