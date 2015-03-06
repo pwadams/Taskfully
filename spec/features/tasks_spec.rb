@@ -35,9 +35,10 @@ end
 
   scenario 'User edits tasks' do
 
-    visit tasks_path
-    expect(page).to have_content("wash")
-    click_on 'Edit'
+    visit projects_path
+    click_link 'knit sweater'
+    click_link "1 task"
+    click_on "Edit"
     fill_in 'Description', with: 'vacuum car'
     click_on 'Update Task'
     expect(page).to have_content('vacuum car')
@@ -46,7 +47,9 @@ end
 
   scenario 'User deletes task' do
 
-      visit tasks_path
+      visit projects_path
+      click_link 'knit sweater'
+      click_link "1 task"
       click_on "Destroy"
     end
 end
