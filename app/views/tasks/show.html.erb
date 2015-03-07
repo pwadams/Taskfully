@@ -11,6 +11,8 @@
   </h1>
 
     <ol class="breadcrumb">
+      <li><%= link_to "Projects", project_tasks_path %></li>
+      <li><%= link_to @project.name, project_tasks_path %></li>
       <li><%= link_to "Tasks", project_tasks_path %></li>
       <li><%= @task.description %></li>
     </ol>

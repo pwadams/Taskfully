@@ -1,8 +1,15 @@
 <div class="container">
 <div class="page-header">
-  <h1>Tasks <%=link_to "New Task", new_project_task_path(@project), class: "btn btn-info pull-right" %></h1>
+  <%=link_to "New Task", new_project_task_path(@project), class: "btn btn-info pull-right" %></h1>
+  <h1> Tasks for
+    <%=@project.name %>
+  </h1>
 </div>
-
+<ol class="breadcrumb">
+  <li><%= link_to "Projects", project_tasks_path %></li>
+  <li><%=link_to @project.name %></li>
+  <li> task </li>
+</ol>
 <table class="table">
   <thead>
     <th>Description</th>
