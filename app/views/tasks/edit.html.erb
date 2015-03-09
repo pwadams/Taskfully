@@ -3,10 +3,10 @@
     <h1>Edit Task</h1>
   </div>
   <ol class="breadcrumb">
-    <li><%= link_to "Projects", project_tasks_path %></li>
-    <li><%= link_to @project.name, project_tasks_path %></li>
+    <li><%= link_to "Projects", projects_path %></li>
+    <li><%= link_to @project.name, project_path(@project) %></li>
     <li><%= link_to "Tasks", project_tasks_path %></li>
-    <li><%= @task.description %></li>
+    <li><%= @task.description, project_task_path(@project, @task) %></li>
   </ol>
 
   <%= render "form" %>

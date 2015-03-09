@@ -6,9 +6,9 @@
   </h1>
 </div>
 <ol class="breadcrumb">
-  <li><%= link_to "Projects", project_tasks_path %></li>
-  <li><%=link_to @project.name %></li>
-  <li> task </li>
+  <li><%= link_to "Projects", projects_path %></li>
+  <li><%=link_to @project.name, projects_path(@project) %></li>
+  <li> Task </li>
 </ol>
 <table class="table">
   <thead>
