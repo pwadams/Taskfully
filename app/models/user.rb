@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :projects, through: :memberships
+  has_many :memberships
   has_secure_password
 
   validates :first_name, presence: true
