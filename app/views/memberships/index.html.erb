@@ -3,9 +3,9 @@
     <h1><%=@project.name %>: Manage Members </h1>
   </div>
   <ol class="breadcrumb">
-    <li><%= link_to "Projects", project_tasks_path %></li>
-    <li><%=link_to @project.name %></li>
-    <li> memberships </li>
+    <li><%= link_to "Projects", projects_path %></li>
+    <li><%=link_to @project.name, project_path(@project) %></li>
+    <li> Memberships </li>
   </ol>
 
   <div class="row">
