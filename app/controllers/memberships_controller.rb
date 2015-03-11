@@ -15,7 +15,7 @@ class MembershipsController < ApplicationController
     @membership = @project.memberships.new(params.require(:membership).permit(:user_id, :project_id, :role))
     if @membership.save
       flash[:notice] = "#{@membership.user.full_name} was successfully added."
-      redirect_to projects_path
+      redirect_to project_path(@project)
     else
       render :index
     end
@@ -33,7 +33,7 @@ class MembershipsController < ApplicationController
     @membership = @project.memberships.find(params[:id])
     if @membership.save(params.require(:membership).permit(:user_id, :project_id, :role))
       flash[:notice] = "#{@membership.user.full_name} was successfully updated."
-      redirect_to projects_path
+      redirect_to project_memberships_path(membership.project_id)
     else
       render :index
     end

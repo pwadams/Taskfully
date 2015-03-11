@@ -1,6 +1,6 @@
 <% if object.errors.any? %>
   <div class="row">
-    <div class="col-md-offset-2 col-md-8">
+    <div class='<%= "#{offset_option} col-md-8" %>'>
       <div class="alert alert-danger" role="alert">
       <h2><%= pluralize(object.errors.count, "error") %> prohibited this form from being saved:</h2>
         <ul>
