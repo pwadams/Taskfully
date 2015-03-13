@@ -15,7 +15,7 @@ class MembershipsController < ApplicationController
     @membership = @project.memberships.new(params.require(:membership).permit(:user_id, :project_id, :role))
     if @membership.save
       flash[:notice] = "#{@membership.user.full_name} was successfully added."
-      redirect_to project_path(@project)
+      redirect_to project_memberships_path(@project)
     else
       render :index
     end
