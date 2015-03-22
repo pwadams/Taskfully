@@ -1,9 +1,11 @@
 class TasksController < ApplicationController
 
       before_action :authenticate_user
+      before_action :set_task, only: [:show, :edit, :update]
+
       before_action do
       @project = Project.find(params[:project_id])
-  end
+      end
 
   def index
     @tasks = @project.tasks
@@ -12,6 +14,8 @@ class TasksController < ApplicationController
 
   def show
     @task = @project.tasks.find(params[:id])
+    @comment = Comment.all
+    @comment = Comment.new
   end
 
   def new
@@ -34,25 +38,27 @@ class TasksController < ApplicationController
 
   def update
     @task = @project.tasks.find(params[:id])
-
     if @task.update(task_params)
      flash[:notice] = "Task was successfully updated"
-
      redirect_to project_task_path
-     else
+    else
       render :edit
+    end
   end
-end
 
-def destroy
+  def destroy
     @task = @project.tasks.find(params[:id])
     @task.destroy
     redirect_to project_tasks_path(@project)
-end
+  end
 
   private
 
   def task_params
     params.require(:task).permit(:name, :description, :is_complete, :due_date, :project_id)
+  end
+
+  def set_task
+    @task = Task.find(params[:id])
   end
 end

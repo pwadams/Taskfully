@@ -7,14 +7,17 @@ Rails.application.routes.draw do
    post 'sign-in', to: 'authentication#create'
    get 'sign-out', to: 'authentication#destroy'
 
-   get '/terms', to: 'terms#index'
-   get '/about', to: 'about#index'
-   get '/faq', to: 'common_questions#index'
+   get 'terms', to: 'terms#index'
+   get 'about', to: 'about#index'
+   get 'faq', to: 'common_questions#index'
 
    resources :users
 
    resources :projects do
       resources :tasks
       resources :memberships
+end
+   resources :tasks, only: [:show] do
+     resources :comments, only: [:create]
 end
 end

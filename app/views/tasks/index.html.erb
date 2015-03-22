@@ -24,8 +24,10 @@
              <s><%= link_to task.description, project_task_path(@project, task) %></s>
             <% else %>
             <%= link_to task.description, project_task_path(@project, task) %>
+            <span class="badge"><%= task.comments.count %></span>
             <% end %>
           </td>
+
 
           <td>
             <% if task.due_date %>
@@ -36,7 +38,7 @@
 
           <td class="text-right">
               <%=link_to "Edit", edit_project_task_path(@project, task), class:"btn btn-info" %>
-              <%=link_to "Destroy", project_task_path(@project, task), class: "btn btn-danger", method: :delete %>
+              <%=link_to " ", project_task_path(@project, task), method: :delete, data: {confirm: "Are you sure?"}, class:"glyphicon glyphicon-remove" %>
           </td>
           </tr>
     <% end %>
