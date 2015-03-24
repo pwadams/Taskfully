@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(params.require(:project).permit(:name))
     if @project.save
-    @project.memberships.create(user_id: current_user.id, role: "owner")
+    @project.memberships.create(user_id: current_user.id, role: "Owner")
 
     flash[:notice] = "Project was successfully created"
     redirect_to projects_path
