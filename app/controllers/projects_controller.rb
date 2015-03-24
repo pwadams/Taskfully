@@ -1,4 +1,4 @@
-class ProjectsController < ApplicationController
+class ProjectsController < PublicController
 
     before_action :authenticate_user
 

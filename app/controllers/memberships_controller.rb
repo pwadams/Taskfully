@@ -1,4 +1,4 @@
-class MembershipsController < ApplicationController
+class MembershipsController < PublicController
   before_action :authenticate_user
 
 
