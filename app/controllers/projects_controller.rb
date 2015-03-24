@@ -1,4 +1,4 @@
-class ProjectsController < PublicController
+class ProjectsController < ApplicationController
 
     before_action :authenticate_user
 
@@ -14,6 +14,8 @@ class ProjectsController < PublicController
   def create
     @project = Project.new(params.require(:project).permit(:name))
     if @project.save
+    @project.memberships.create(user_id: current_user.id, role: "owner")
+
     flash[:notice] = "Project was successfully created"
     redirect_to projects_path
   else

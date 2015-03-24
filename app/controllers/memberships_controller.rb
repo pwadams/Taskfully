@@ -1,10 +1,8 @@
-class MembershipsController < PublicController
-  before_action :authenticate_user
+class MembershipsController < ApplicationController
 
+  before_action :find_project
+  before_action :ensure_project_owner, only: [:update, :destroy]
 
-  before_action do
-    @project = Project.find(params[:project_id])
-  end
 
   def index
     @membership = @project.memberships.new
@@ -12,7 +10,7 @@ class MembershipsController < PublicController
   end
 
   def create
-    @membership = @project.memberships.new(params.require(:membership).permit(:user_id, :project_id, :role))
+    @membership = @project.memberships.new(membership_params)
     if @membership.save
       flash[:notice] = "#{@membership.user.full_name} was successfully added."
       redirect_to project_memberships_path(@project)
@@ -26,12 +24,12 @@ class MembershipsController < PublicController
   end
 
   def edit
-    @membership = project.memberships.find(params[:id])
+    @membership = @project.memberships.find(params[:id])
   end
 
   def update
     @membership = @project.memberships.find(params[:id])
-    if @membership.update(params.require(:membership).permit(:user_id, :project_id, :role))
+    if @membership.update(membership_params)
       flash[:notice] = "#{@membership.user.full_name} was successfully updated."
       redirect_to project_memberships_path(@project)
     else
@@ -44,5 +42,21 @@ class MembershipsController < PublicController
     membership.destroy
     redirect_to project_memberships_path(@project)
     flash[:success] = membership.user.full_name + " was successfully removed."
+  end
+
+  private
+
+  def membership_params
+    params.require(:membership).permit(:user_id, :project_id, :role)
+  end
+
+  def find_project
+    @project = Project.find(params[:project_id])
+  end
+
+  def ensure_project_owner
+    if Membership.where(project_id: params[:project_id], role: 'Owner').count <= 1
+      redirect_to project_memberships_path(@project), notice: 'Project must have at least one owner'
+    end
   end
 end

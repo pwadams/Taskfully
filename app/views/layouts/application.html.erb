@@ -13,11 +13,23 @@
     <div class="navbar-header">
       <%= link_to "gCamp", projects_path, class:"navbar-brand" %>
     </div>
+<% if current_user %>
     <ul class="nav navbar-nav">
-      <li> <%= link_to "Projects", projects_path</li>
-      <li> <%= link_to "Users", users_path</li>
+      <li class="dropdown">
+        <%= link_to "#", class: "dropdown-toggle", role: "button", data: {toggle: "dropdown"} do %>
+            Projects<span class="caret"></span>
+        <% end %>
+              <ul class="dropdown-menu" role="menu">
+                <% current_user.projects.each do |project| %>
+                  <li><%= link_to project.name, project_path(project) %></li>
+                <% end %>
+                  <li class="divider"></li>
+                  <li><%= link_to "New Project", new_project_path %></li>
+              </ul>
+      </li>
+            <li><%= link_to "Users", users_path %></li>
     </ul>
-
+<% end %>
      <% if current_user %>
      <ul class = "nav navbar-nav navbar-right">
         <li> <%= link_to current_user.full_name, user_path(current_user) %> </li>
@@ -50,7 +62,12 @@
 <footer>
 <div class= "container">
   <hr>
-  <p class="text-center"><%=link_to "Home", root_path%> | <%=link_to "About", about_path %> | <%=link_to "Terms", terms_path %> | <%=link_to "FAQ", faq_path %></p>
+  <%=link_to "About", about_path %> | <%=link_to "Terms", terms_path %> | <%=link_to "FAQ", faq_path %> |
+  <%=link_to "Users", users_path %> | <%=link_to "Projects", projects_path %>
+  <%=link_to image_tag("linked_in.jpg", class: "social_media"),"https://www.linkedin.com/" %>
+  <%=link_to image_tag("GitHub.png", class: "social_media"),"http://github.com" %>
+  <%=link_to image_tag("Twitter.png", class: "social_media"),"https://twitter.com/" %>
+  <%=link_to image_tag("galvanize.png", class: "social_media"),"http://www.galvanize.it/" %>
 </div>
 </footer>
 </body>
