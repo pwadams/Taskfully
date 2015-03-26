@@ -1,10 +1,13 @@
 class ProjectsController < ApplicationController
 
     before_action :authenticate_user
+    before_action :find_project, only: [:show, :edit, :update, :destroy]
+    before_action :ensure_project_member, only: [:show, :edit, :update, :destroy]
+    before_action :ensure_project_owner, only: [:edit, :update, :destroy]
 
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects
   end
 
   def new
@@ -12,38 +15,44 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(params.require(:project).permit(:name))
+    @project = Project.new(project_params)
     if @project.save
     @project.memberships.create(user_id: current_user.id, role: "Owner")
-
     flash[:notice] = "Project was successfully created"
-    redirect_to projects_path
-  else
+    redirect_to project_tasks_path(@project)
+    else
     render :new
-  end
+    end
   end
 
   def show
-    @project = Project.find(params[:id])
   end
 
   def edit
-    @project = Project.find(params[:id])
   end
 
   def update
-    @project = Project.find(params[:id])
-    if @project.update(params.require(:project).permit(:name))
+    if @project.update(project_params)
     flash[:notice] = "Project was successfully updated"
     redirect_to project_path
     else
     render :edit
-  end
+    end
   end
 
   def destroy
     Project.destroy(params[:id])
     flash[:notice] = "Project was successfully deleted"
     redirect_to projects_path
+  end
+
+  private
+
+  def project_params
+    params.require(:project).permit(:name)
+  end
+
+  def find_project
+    @project = Project.find(params[:id])
   end
 end

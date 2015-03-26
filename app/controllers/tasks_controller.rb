@@ -1,11 +1,9 @@
-class TasksController < PublicController
+class TasksController < ApplicationController
 
-      before_action :authenticate_user
+      before_action :find_project
+      before_action :ensure_project_member
       before_action :set_task, only: [:show, :edit, :update]
 
-      before_action do
-      @project = Project.find(params[:project_id])
-      end
 
   def index
     @tasks = @project.tasks
@@ -61,4 +59,8 @@ class TasksController < PublicController
   def set_task
     @task = Task.find(params[:id])
   end
+
+  def find_project
+    @project = Project.find(params[:project_id])
+    end
 end

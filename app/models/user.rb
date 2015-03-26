@@ -11,4 +11,12 @@ class User < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def is_owner?(project)
+    self.memberships.where(project_id: project.id).present?
+    end
+
+  def is_member?(project)
+    self.memberships.where(project_id: project.id).present?
+  end
 end

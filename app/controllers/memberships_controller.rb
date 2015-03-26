@@ -1,8 +1,9 @@
 class MembershipsController < ApplicationController
 
   before_action :find_project
-  before_action :ensure_project_owner, only: [:update, :destroy]
-
+  before_action :ensure_project_member, only: [:index, :create, :update, :destroy]
+  before_action :ensure_project_owner, only: [:edit, :update]
+  before_action :ensure_membership_project_owner, only: [:update, :destroy]
 
   def index
     @membership = @project.memberships.new
@@ -54,7 +55,7 @@ class MembershipsController < ApplicationController
     @project = Project.find(params[:project_id])
   end
 
-  def ensure_project_owner
+  def ensure_membership_project_owner
     if Membership.where(project_id: params[:project_id], role: 'Owner').count <= 1
       redirect_to project_memberships_path(@project), notice: 'Project must have at least one owner'
     end

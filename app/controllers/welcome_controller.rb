@@ -1,4 +1,6 @@
 class WelcomeController < PublicController
+
+
  def index
 
 @quotes={
