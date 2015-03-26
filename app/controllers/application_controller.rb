@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
 
   def ensure_project_owner
     unless current_user.is_owner?(@project)
-      flash[:error] = "You do not have access"
+      flash[:idiot] = "You do not have access"
       redirect_to project_path(@project)
     end
   end

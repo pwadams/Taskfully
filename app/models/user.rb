@@ -13,10 +13,12 @@ class User < ActiveRecord::Base
   end
 
   def is_owner?(project)
-    self.memberships.where(project_id: project.id).present?
+    self.memberships.where(project_id: project.id).where(role: "Owner").present?
+
     end
 
+
   def is_member?(project)
-    self.memberships.where(project_id: project.id).present?
+    self.memberships.where(project_id: project.id).where(role: "Member").present?
   end
 end
