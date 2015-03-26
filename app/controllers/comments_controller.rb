@@ -1,4 +1,5 @@
-class CommentsController <PublicController
+class CommentsController <ApplicationController
+
   before_action :find_and_set_task
 
   def new

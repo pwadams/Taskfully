@@ -1,9 +1,10 @@
 class MembershipsController < ApplicationController
 
   before_action :find_project
-  before_action :ensure_project_member, only: [:index, :create, :update, :destroy]
-  before_action :ensure_project_owner, only: [:edit, :update]
+  before_action :set_membership, only: [:update, :destroy]
   before_action :ensure_membership_project_owner, only: [:update, :destroy]
+  before_action :ensure_project_owner, only: [:update, :destroy]
+  before_action :ensure_project_member, only: [:index]
 
   def index
     @membership = @project.memberships.new
@@ -55,9 +56,14 @@ class MembershipsController < ApplicationController
     @project = Project.find(params[:project_id])
   end
 
+  def set_membership
+    @membership = Membership.find(params[:id])
+  end
+
   def ensure_membership_project_owner
-    if Membership.where(project_id: params[:project_id], role: 'Owner').count <= 1
-      redirect_to project_memberships_path(@project), notice: 'Project must have at least one owner'
+    if @membership.role == "Owner" && @project.memberships.where(role: "Owner").count <= 1
+      redirect_to project_memberships_path(@project)
+      flash[:idiot] = 'Project must have at least one owner'
     end
   end
 end
