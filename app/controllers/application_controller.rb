@@ -13,11 +13,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # def current_user
-  #   if session[:user_id].present?
-  #   User.find(session[:user_id])
-  #   end
-  # end
   def current_user
   @current_user ||= User.find(session[:user_id]) if session[:user_id].present?
   end
@@ -35,4 +30,11 @@ class ApplicationController < ActionController::Base
     redirect_to projects_path
     end
   end
+
+  def no_access
+      unless current_user = @user
+        render file: 'public/404.html', status: :not_found, layout: false
+      end
+  end
+
 end

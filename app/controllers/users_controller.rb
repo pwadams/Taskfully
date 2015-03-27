@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
 
   before_action :authenticate_user
+  before_action :no_access, only: [:edit, :update]
+
+
 
   def index
       @users = User.all
@@ -43,6 +46,7 @@ end
   def destroy
     User.destroy(params[:id])
     flash[:notice] = "User was successfully deleted"
+    session[:user_id] = nil
     redirect_to users_path
   end
 
@@ -51,4 +55,5 @@ end
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
+
 end
