@@ -19,6 +19,6 @@ class User < ActiveRecord::Base
 
 
   def is_member?(project)
-    self.memberships.where(project_id: project.id).where(role: "Member").present?
+    self.memberships.where(project_id: project.id)
   end
 end
