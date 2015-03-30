@@ -12,12 +12,17 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
-  def is_owner?(project)
-    self.memberships.where(project_id: project.id).where(role: "Owner").present?
-
-    end
-
   def is_member?(project)
-    self.memberships.where(project_id: project.id)
+    self.memberships.find_by(project_id: project.id).present? || self.admin
+  end
+
+  def is_owner?(project)
+    self.memberships.find_by(project_id: project.id, role: "Owner").present? || self.admin
+  end
+
+  def pivotal
+    unless pivotal_token == nil
+    "#{pivotal_token[0..3]}****************************"
+    end
   end
 end

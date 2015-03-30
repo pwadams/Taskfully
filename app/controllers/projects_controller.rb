@@ -2,12 +2,19 @@ class ProjectsController < ApplicationController
 
     before_action :authenticate_user
     before_action :find_project, only: [:show, :edit, :update, :destroy]
-    before_action :ensure_project_member, only: [:show, :edit, :update, :destroy]
-    before_action :ensure_project_owner, only: [:edit, :update, :destroy]
+    before_action :ensure_project_member_or_admin, only: [:edit, :show, :update, :destroy]
+    before_action :ensure_project_owner_or_admin, only: [:edit, :update, :destroy]
 
 
   def index
-    @projects = current_user.projects
+    if current_user.admin
+      @project = Project.all
+    else
+      @projects = current_user.projects
+    end
+
+  #   tracker_api = TrackerAPI.new
+  #  @tracker_projects ||= tracker_api.projects(current_user.pivotal_token) if current_user.pivotal_token
   end
 
   def new

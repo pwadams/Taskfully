@@ -21,6 +21,23 @@
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
       <%= link_to "gCamp", root_path, class:"navbar-brand" %>
+      <% if current_user %>
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <%= link_to "#", class: "dropdown-toggle", role: "button", data: {toggle: "dropdown"} do %>
+                  Projects<span class="caret"></span>
+              <% end %>
+                    <ul class="dropdown-menu" role="menu">
+                      <% current_user.projects.each do |project| %>
+                        <li><%= link_to project.name, project_path(project) %></li>
+                      <% end %>
+                        <li class="divider"></li>
+                        <li><%= link_to "New Project", new_project_path %></li>
+                    </ul>
+            </li>
+                  <li><%= link_to "Users", users_path %></li>
+          </ul>
+      <% end %>
 
        <% if current_user %>
        <ul class = "nav navbar-nav navbar-right">

@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
 
       before_action :find_project
-      before_action :ensure_project_member
+      before_action :ensure_project_member_or_admin
       before_action :set_task, only: [:show, :edit, :update]
 
 

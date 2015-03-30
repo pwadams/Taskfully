@@ -1,13 +1,11 @@
 class UsersController < ApplicationController
 
   before_action :authenticate_user
-  before_action :no_access, only: [:edit, :update]
-
 
 
   def index
-      @users = User.all
-    end
+    @users = User.all
+  end
 
   def show
     @user = User.find(params[:id])
@@ -29,7 +27,10 @@ end
 
   def edit
     @user = User.find(params[:id])
+    unless @user == current_user || current_user.admin
+    render file: 'public/404.html', status: :not_found, layout: false
   end
+end
 
   def update
     @user = User.find(params[:id])
@@ -53,7 +54,12 @@ end
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
-  end
 
+    if current_user.admin
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation,:admin)
+    else
+
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    end
+  end
 end

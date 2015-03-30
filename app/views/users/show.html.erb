@@ -1,6 +1,6 @@
 <h1>
   <div class= "page-header">
-    <% if current_user.id == @user.id %>
+    <% if @user == current_user || current_user.is_admin %>
     <%=link_to "Edit", edit_user_path(@user), class: "btn btn-info pull-right" %>
     <%= @user.full_name %>
     <% end %>
@@ -13,8 +13,11 @@
   <dd><%= @user.first_name %></dd>
   <dt>Last name</dt>
   <dd><%= @user.last_name %></dd>
-  <% if current_user.id == @user.id %>
+  <% if current_user == user || current_user.admin || belong_to_same_project(current_user,user) %>
   <dt>Email</dt>
   <dd><%= mail_to @user.email %></dd>
   <% end %>
+
+<dt>Pivotal Tracker Token</dt>
+ <dd><%= @user.pivotal %> </dd>
 </dl>
