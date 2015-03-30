@@ -56,10 +56,10 @@ end
   def user_params
 
     if current_user.admin
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation,:admin)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation,:admin, :pivotal_token)
     else
 
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :pivotal_token)
     end
   end
 end

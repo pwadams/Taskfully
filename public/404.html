@@ -7,66 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <!-- <nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <%= link_to "gCamp", projects_path, class:"navbar-brand" %>
-    </div>
-<% if current_user %>
-    <ul class="nav navbar-nav">
-      <li class="dropdown">
-        <%= link_to "#", class: "dropdown-toggle", role: "button", data: {toggle: "dropdown"} do %>
-            Projects<span class="caret"></span>
-        <% end %>
-              <ul class="dropdown-menu" role="menu">
-                <% current_user.projects.each do |project| %>
-                  <li><%= link_to project.name, project_path(project) %></li>
-                <% end %>
-                  <li class="divider"></li>
-                  <li><%= link_to "New Project", new_project_path %></li>
-              </ul>
-      </li>
-            <li><%= link_to "Users", users_path %></li>
-    </ul>
-<% end %>
-     <% if current_user %>
-     <ul class = "nav navbar-nav navbar-right">
-        <li> <%= link_to current_user.full_name, user_path(current_user) %> </li>
-        <li> <%= link_to "Sign Out", sign_out_path %> </li>
-    </ul>
-     <% else %>
-     <ul class = "nav navbar-nav navbar-right">
-        <li> <%= link_to "Sign Up", sign_up_path %> </li>
-        <li> <%= link_to "Sign In", sign_in_path %> </li>
-    </ul>
-     <% end %>
-     </div>
-  </div>
-</nav> -->
-
-
-<!-- <div class= "container">
-  <% if flash[:notice].present? %>
-    <p class="alert alert-success"><%= flash[:notice] %></p>
-  <% end %>
-
-  <% if flash[:idiot].present? %>
-    <p class="alert alert-danger"><%= flash[:idiot] %></p>
-  <% end %> -->
-
   <div class= "text-center">
        <h4>Opps! This page no longer exists. Don't be a sad kitty</h4>
          <%= image_tag "sad_kitty.jpg" %>
   </div>
-
-
 </div>
 
-<!-- <footer>
-<div class= "container">
-  <hr>
-  <p class="text-center"><%=link_to "Home", root_path%> | <%=link_to "About", about_path %> | <%=link_to "Terms", terms_path %> | <%=link_to "FAQ", faq_path %></p>
-</div>
-</footer> -->
 </body>
 </html>
