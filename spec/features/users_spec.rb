@@ -7,8 +7,8 @@ require 'rails_helper'
       @user.save!
     end
 
-    scenario 'can see index page' do
-      visit users_path
+    scenario 'can see welcome page' do
+      visit sign_in_path
       expect(page).to have_content "Users"
       expect(page).to have_content "Chloe"
       expect(page).to have_content "Bradley"

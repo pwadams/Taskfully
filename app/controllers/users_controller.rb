@@ -34,17 +34,21 @@ end
 
   def update
     @user = User.find(params[:id])
-
+    unless @user == current_user || current_user.admin
+      render file: 'public/404.html', status: :not_found, layout: false
+    end
     if @user.update(user_params)
-       flash[:notice] = "User was successfully updated"
-
-       redirect_to users_path
-       else
+      flash[:notice] = "User was successfully updated"
+      redirect_to users_path
+    else
       render :edit
+    end
   end
-end
 
   def destroy
+    unless @user == current_user || current_user.admin
+    render file: 'public/404.html', status: :not_found, layout: false
+  end
     User.destroy(params[:id])
     flash[:notice] = "User was successfully deleted"
     session[:user_id] = nil
