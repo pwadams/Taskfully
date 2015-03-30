@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
+  <!-- <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
       <%= link_to "gCamp", projects_path, class:"navbar-brand" %>
@@ -42,31 +42,31 @@
      <% end %>
      </div>
   </div>
-</nav>
+</nav> -->
 
 
-<div class= "container">
+<!-- <div class= "container">
   <% if flash[:notice].present? %>
     <p class="alert alert-success"><%= flash[:notice] %></p>
   <% end %>
 
   <% if flash[:idiot].present? %>
     <p class="alert alert-danger"><%= flash[:idiot] %></p>
-  <% end %>
+  <% end %> -->
 
   <div class= "text-center">
        <h4>Opps! This page no longer exists. Don't be a sad kitty</h4>
-         <%= image_tag "sad_kitty.gif" %>
+         <%= image_tag "sad_kitty.jpg" %>
   </div>
 
 
 </div>
 
-<footer>
+<!-- <footer>
 <div class= "container">
   <hr>
   <p class="text-center"><%=link_to "Home", root_path%> | <%=link_to "About", about_path %> | <%=link_to "Terms", terms_path %> | <%=link_to "FAQ", faq_path %></p>
 </div>
-</footer>
+</footer> -->
 </body>
 </html>

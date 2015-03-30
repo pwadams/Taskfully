@@ -36,12 +36,13 @@
   </div>
 
   <div class="form-group">
-    <%=f.label :pivotal_token, 'Pivotal Tracker Token',class:"control-label col-sm-2"
+    <%=f.label :pivotal_token, 'Pivotal Tracker Token',class:"control-label col-sm-2" %>
     <div class= "col-md-4">
-    <%= f.text_field :pivotal_token, :value => @user.pivotal, class:"form-control"
-    <div class= "col-sm-2">
-
-  <% if current_user.is_admin %>
+      <%= f.text_field :pivotal_token, :value => @user.pivotal, class:"form-control" %>
+    </div>
+  </div>
+  
+  <% if current_user.admin %>
     <div class="form-group">
       <div class="checkbox">
         <div class="col-md-10 col-md-offset-2">
@@ -61,13 +62,4 @@
     </div>
   </div>
 
-  <% if params[:action] == "edit" %>
-  <div class="form-group">
-    <div class= "col-md-offset-2 col-md-4" >
-      <div class = "well text-center" >
-        <%= link_to "Delete User", @user, method: "delete", data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
-      </div>
-    </div>
-  </div>
-<% end %>
 <% end %>

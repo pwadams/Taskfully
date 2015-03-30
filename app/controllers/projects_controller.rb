@@ -13,8 +13,8 @@ class ProjectsController < ApplicationController
       @projects = current_user.projects
     end
 
-  #   tracker_api = TrackerAPI.new
-  #  @tracker_projects ||= tracker_api.projects(current_user.pivotal_token) if current_user.pivotal_token
+    tracker_api = TrackerAPI.new
+   @tracker_projects ||= tracker_api.projects(current_user.pivotal_token) if current_user.pivotal_token
   end
 
   def new
