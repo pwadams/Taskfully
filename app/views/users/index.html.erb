@@ -23,7 +23,7 @@
               </td>
               <td>
                 <% if user == current_user || current_user.admin %>
-                  <%= link_to "Edit", edit_user_path(user) %>
+                  <%= link_to "Edit", edit_user_path(user), class:"pull-right" %>
                   <% end %>
                 <% end %>
             </td>
