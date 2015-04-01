@@ -47,11 +47,10 @@ end
 
   def destroy
     unless @user == current_user || current_user.admin
-    render file: 'public/404.html', status: :not_found, layout: false
-  end
+      render file: 'public/404.html', status: :not_found, layout: false
+    end
     User.destroy(params[:id])
     flash[:notice] = "User was successfully deleted"
-    session[:user_id] = nil
     redirect_to users_path
   end
 

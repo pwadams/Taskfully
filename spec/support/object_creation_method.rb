@@ -1,18 +1,48 @@
-def sign_in
-  visit root_path
-  click_on 'Sign Up'
-  fill_in 'First name', with: 'Annie'
-  fill_in 'Last name', with: 'Lydens'
-  fill_in 'Email', with: 'annielydens.org'
-  fill_in 'Password', with: 'password'
-  fill_in 'Password confirmation', with: 'password'
-  within ("form") { click_on 'Sign Up' }
+def create_admin
+  User.create!(
+  first_name: 'Pamela',
+  last_name: 'Adams',
+  email: "admin@admin.com",
+  password: "password",
+  password_confirmation: "password",
+  admin: true)
 end
 
-def create_project
-  Project.create!(name: "knit sweater")
+def create_user(options = {})
+  User.create!({
+    first_name: 'Chloe',
+    last_name: 'Bradley',
+    email: "bradley#{rand(1000)+1}@gschool.com",
+    password: 'password',
+    password_confirmation: "password",
+    admin: false
+  }.merge(options))
 end
 
-def create_task(proj)
-  Task.create!(description: "buy yarn", due_date: "01/01/2015", project_id: proj.id)
+def create_member(project, user, options = {})
+  Membership.create!({
+    role: 'member',
+    user_id: user.id,
+    project_id: project.id
+  }.merge(options))
+end
+
+def create_project(options = {})
+  Project.create!({
+    name: "knit sweater"
+  }.merge(options))
+end
+
+def create_task(options = {})
+  Task.create!({
+    description: "buy yarn",
+    due_date: "01/01/2015",
+    project_id: create_project.id
+  }.merge(options))
+end
+
+def destroy_records
+  User.destroy_all
+  Membership.destroy_all
+  Project.destroy_all
 end
