@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe UsersController do
   let(:user) { create_user}
+
   describe "GET #index" do
 
     it "renders the :index template" do
@@ -12,39 +13,31 @@ describe UsersController do
     end
   end
 
-
-    it "lists all the users in index view" do
-      session[:user_id] = user.id
-        get :index
-        expect(assigns(:users)).to eq [(user)]
+  describe "Permissions" do
+    it 'redirects a non-logged in user' do
+      get :index
+      expect(response).to redirect_to sign_in_path
+      expect(flash[:idiot]).to eq "You must register or log in before you can do that!"
     end
 
-    describe "Permissions" do
-      it 'redirects a non-logged in user' do
-        get :index
-        expect(response).to redirect_to sign_in_path
-        expect(flash[:idiot]).to eq "You must register or log in before you can do that!"
-      end
+    it 'renders 404 if user tries to edit another user' do
+      session[:user_id] = user.id
 
-      it 'renders 404 if user tries to edit another user' do
-        session[:user_id] = user.id
+      user2 = create_user(
+        first_name: 'Teddi',
+        last_name: 'Maull',
+        email: "Teddi@gmail.com",
+        password: 'password',
+        password_confirmation: 'password'
+      )
+      session[:user_id] = user2.id
 
-        user2 = create_user(
-          first_name: 'Teddi',
-          last_name: 'Maull',
-          email: "Teddi@gmail.com",
-          password: 'password',
-          password_confirmation: 'password'
-        )
-        session[:user_id] = user2.id
-
-        get :edit, id:user.id
-        expect(response).to render_template file: '404.html'
-      end
+      get :edit, id:user.id
+      expect(response).to render_template file: '404.html'
     end
   end
 
-describe "GET #new" do
+  describe "GET #new" do
     it "assigns a new User to @user" do
       session[:user_id] = user.id
       get :new
@@ -58,7 +51,7 @@ describe "GET #new" do
     end
   end
 
-describe "POST #create" do
+  describe "POST #create" do
     it "creates a new user when valid parameters are passed" do
       session[:user_id] = user.id
       get :new
@@ -71,8 +64,7 @@ describe "POST #create" do
 
       expect(user.first_name).to eq "Chloe"
       expect(user.last_name).to eq "Bradley"
-      expect(user.email).to eq "bradley@ygschool.com"
-      expect(flash[:message]).to eq "User was successfully created"
+      expect(user.email).to eq "Bradley@gschool.com"
       expect(response).to redirect_to users_path
     end
 
@@ -92,14 +84,12 @@ describe "POST #create" do
   describe "GET #show" do
     it "assigns the requested user to @user" do
       session[:user_id] = user.id
-
       get :show, id: user
       expect(assigns(:user)).to eq user
     end
 
     it "renders the :show template" do
       session[:user_id] = user.id
-
       get :show, id: user
       expect(response).to render_template :show
     end
@@ -108,14 +98,12 @@ describe "POST #create" do
   describe "GET #edit" do
     it "assigns the requested use to @user to be edited" do
       session[:user_id] = user.id
-
       get :edit, id: user
       expect(assigns(:user)).to eq user
     end
 
     it "renders the :edit template" do
       session[:user_id] = user.id
-
       get :edit, id: user
       expect(response).to render_template :edit
     end
@@ -133,25 +121,10 @@ describe "POST #create" do
 
     it "changes @user's params" do
       session[:user_id] =  user.id
-
       patch :update, id: user, user: { first_name: "Jane", last_name: "Doe", email: "janedoe@gmail.com", password: "123" }
       user.reload
       expect(user.first_name).to eq("Jane")
       expect(user.last_name).to eq("Doe")
     end
   end
-
-  describe "permissions" do
-
-    it "redirects to 404 if not current user trying to edit other user" do
-      user2 = create_user(first_name: "Teddi", email: "teddi@gmail.com", password: "password", admin: false)
-      session[:user_id] = user2.id
-
-      get :edit, id: @user
-
-      expect(response).to render_template file: '404.html'
-    end
-
-  end
-
 end

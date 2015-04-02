@@ -1,9 +1,10 @@
 class MembershipsController < ApplicationController
 
+  before_action :authenticate_user
   before_action :find_project
   before_action :set_membership, only: [:update, :destroy]
   before_action :ensure_one_project_owner, only: [:update, :destroy]
-  before_action :ensure_project_owner_or_admin, only: [:edit, :update, :destroy]
+  before_action :ensure_project_owner_or_admin, only: [:create, :edit, :update, :destroy]
   before_action :ensure_project_member_or_admin, only: [:edit, :update, :show, :index]
 
   def index

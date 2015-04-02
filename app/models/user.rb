@@ -31,8 +31,6 @@ class User < ActiveRecord::Base
     return false
   end
 
-  
-
   def pivotal
     unless pivotal_token == nil
     "#{pivotal_token[0..3]}****************************"
