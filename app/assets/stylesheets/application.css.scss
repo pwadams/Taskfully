@@ -18,9 +18,27 @@
  @import "bootstrap";
 
 
- .jumbotron {
-    background-color: #33CCCC;
+ .image {
+    position: relative;
+    width: 100%;
+    padding: 25px 1000px 25px 100px;
   }
+
+.first {
+  font-size: 4em;
+  position: absolute;
+  top: 10px;
+  left: 50px;
+  width: 100%;
+}
+.sub {
+  font-size: 2.5em;
+  position: absolute;
+  top: 75px;
+  left: 50px;
+  width: 100%;
+}
+
 
   .panel-info > .panel-heading {
     background-color: #33CCCC;
