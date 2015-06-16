@@ -17,6 +17,15 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+
+ .jumbotron {
+    background-color: #33CCCC;
+  }
+
+  .panel-info > .panel-heading {
+    background-color: #33CCCC;
+  }
+
  .social_media {
    float: right;
    height: 30px;

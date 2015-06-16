@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GCamp</title>
+  <title>TaskFull</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -20,7 +20,7 @@
 
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
-      <%= link_to "gCamp", root_path, class:"navbar-brand" %>
+      <%= link_to "TaskFull", root_path, class:"navbar-brand" %>
       <% if current_user %>
           <ul class="nav navbar-nav">
             <li class="dropdown">
@@ -70,9 +70,9 @@
   <%=link_to "Projects", projects_path %>
   <% end %>
 
-  <%=link_to image_tag("linked_in.jpg", class: "social_media"),"https://www.linkedin.com/" %>
-  <%=link_to image_tag("GitHub.png", class: "social_media"),"http://github.com" %>
-  <%=link_to image_tag("Twitter.png", class: "social_media"),"https://twitter.com/" %>
+  <%=link_to image_tag("linked_in.jpg", class: "social_media"),"https://www.linkedin.com/in/pamelawakemanadams/" %>
+  <%=link_to image_tag("GitHub.png", class: "social_media"),"https://github.com/pwadams" %>
+  <%=link_to image_tag("Twitter.png", class: "social_media"),"https://twitter.com/pwadams" %>
   <%=link_to image_tag("galvanize.png", class: "social_media"),"http://www.galvanize.it/" %>
 </div>
 </footer>
