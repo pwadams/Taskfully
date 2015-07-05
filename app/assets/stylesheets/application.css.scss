@@ -17,24 +17,21 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-
- .image {
-    position: relative;
-    width: 100%;
-    padding: 25px 1000px 25px 100px;
-  }
+.image {
+  padding-left: 25px;
+}
 
 .first {
   font-size: 4em;
   position: absolute;
-  top: 10px;
+  top: 50px;
   left: 50px;
   width: 100%;
 }
 .sub {
   font-size: 2.5em;
   position: absolute;
-  top: 75px;
+  top: 120px;
   left: 50px;
   width: 100%;
 }
